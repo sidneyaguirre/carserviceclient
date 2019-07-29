@@ -20,11 +20,14 @@ export class CarService {
 
   save(car: any): Observable<any> {
     let result: Observable<Object>;
+    console.log(car);
+    
     if (car['href']) {
-      result = this.http.put(car.href, car);
+      result = this.http.put(car.href, car); 
+      console.log(`el resultado es: ${result}`);     
     } else {
       result = this.http.post(this.CAR_API, car);
-    }
+    }    
     return result;
   }
 

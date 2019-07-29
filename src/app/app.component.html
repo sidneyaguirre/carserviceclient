@@ -2,4 +2,11 @@
   <span>Welcome to {{title}}!</span>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<router-outlet>
+  <div>
+      <button mat-button color="primary" [routerLink]="['/car-list']">List Cars</button> 
+      <button mat-button color="primary" [routerLink]="['/car-add']">Add Car</button>
+      <button mat-button color="primary" [routerLink]="['/owner-list']">List Owners</button>  
+      <button mat-button color="primary" [routerLink]="['/owner-edit']">Add Owner</button>  
+  </div>
+</router-outlet>
