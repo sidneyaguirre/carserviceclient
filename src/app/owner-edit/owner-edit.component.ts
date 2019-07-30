@@ -1,35 +1,39 @@
-import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { OwnerService } from '../shared/owner/owner.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+import { OwnerService } from "../shared/owner/owner.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { NgForm } from "@angular/forms";
 
 @Component({
-  selector: 'app-owner-edit',
-  templateUrl: './owner-edit.component.html',
-  styleUrls: ['./owner-edit.component.css']
+  selector: "app-owner-edit",
+  templateUrl: "./owner-edit.component.html",
+  styleUrls: ["./owner-edit.component.css"]
 })
-
 export class OwnerEditComponent implements OnInit {
+  owners: Array<any>;
   owner: any = {};
   sub: Subscription;
 
-  constructor(private route: ActivatedRoute,
-              private router: Router,
-              private ownerService: OwnerService) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private ownerService: OwnerService
+  ) {}
 
   ngOnInit() {
+    this.owners = [];
     this.sub = this.route.params.subscribe(params => {
-      const id = params['id'];
+      const id = params["id"];
       if (id) {
-        this.ownerService.get(id).subscribe((owner: any) => {
-          if (owner) {
-            this.owner = owner;
-            this.owner.href = owner._links.self.href;
-          } else {
-            console.log(`Owner with id '${id}' not found, returning to list`);
-            this.gotoList();
+        console.log('el id es ' + id);
+        
+        this.ownerService.getAll().subscribe((data: any) => {          
+          this.owners = data._embedded.owners;          
+          for (let element of this.owners) {            
+            if (element.dni == id) {
+              this.owner = element;
+              this.owner.href = element._links.self.href;
+            }
           }
         });
       }
@@ -41,19 +45,24 @@ export class OwnerEditComponent implements OnInit {
   }
 
   gotoList() {
-    this.router.navigate(['/owner-list']);
+    this.router.navigate(["/owner-list"]);
   }
 
   save(form: NgForm) {
-    this.ownerService.save(form).subscribe(result => {
-      this.gotoList();
-    }, error => console.error(error));
+    this.ownerService.save(form).subscribe(
+      result => {
+        this.gotoList();
+      },
+      error => console.error(error)
+    );
   }
 
   remove(href) {
-    this.ownerService.remove(href).subscribe(result => {
-      this.gotoList();
-    }, error => console.error(error));
+    this.ownerService.remove(href).subscribe(
+      result => {
+        this.gotoList();
+      },
+      error => console.error(error)
+    );
   }
-
 }

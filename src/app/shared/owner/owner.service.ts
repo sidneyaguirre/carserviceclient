@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
 
 export class OwnerService {
 
-  ownerApi = 'https://thawing-chamber-47973.herokuapp.com/owners';
+  API = 'https://thawing-chamber-47973.herokuapp.com'; 
 
   constructor(public http: HttpClient) {
   }
 
   
   getAll(): Observable<any>{
-    return this.http.get(this.ownerApi);
+    return this.http.get(this.API + '/owners');
   }
 
   get(id: string) {
-    return this.http.get(this.ownerApi + '/' + id);
+    return this.http.get(this.API + '/owner/?dni=' + id);
   };
 
   remove(href: string) {
@@ -33,7 +33,7 @@ export class OwnerService {
       result = this.http.put(owner.href, owner); 
       console.log(`el resultado es: ${result}`);     
     } else {
-      result = this.http.post(this.ownerApi, owner);
+      result = this.http.post(this.API, owner);
     }    
     return result;
   }
