@@ -1,1 +1,13 @@
-<p>owner-car-list works!</p>
+<mat-card>
+    <mat-card-title>Car & Owner List</mat-card-title>
+    <mat-card-content>
+            <mat-list *ngFor="let item of result">
+                    <mat-list-item>
+                        <img mat-list-avatar src="{{item.giphyUrl}}" alt="{{item.name}}">
+                        <h3 mat-line>Car {{item.carName}} </h3>
+                        <h3 mat-line> Owner: {{item.ownerName}}</h3>
+                        <h3 mat-line> Owner id: {{item.ownerDni}}</h3>
+                    </mat-list-item>
+                </mat-list>
+    </mat-card-content>
+</mat-card>

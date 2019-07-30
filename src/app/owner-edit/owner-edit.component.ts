@@ -25,8 +25,6 @@ export class OwnerEditComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       const id = params["id"];
       if (id) {
-        console.log('el id es ' + id);
-        
         this.ownerService.getAll().subscribe((data: any) => {          
           this.owners = data._embedded.owners;          
           for (let element of this.owners) {            
