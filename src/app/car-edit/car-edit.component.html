@@ -5,11 +5,11 @@
       </mat-card-header>
       <mat-card-content>
         <input  type="hidden" name="href" [(ngModel)]="car.href">
-        <mat-form-field>
+        <mat-form-field appearance="legacy">
           <input matInput placeholder="Car Name" [(ngModel)]="car.name"
                  required name="name" #name>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field appearance="standard">
           <input matInput placeholder="Owner Id" [(ngModel)]="car.ownerDni"
                  required name="ownerDni" #owner>
         </mat-form-field>

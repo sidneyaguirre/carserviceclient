@@ -5,6 +5,7 @@ import { CarEditComponent } from './car-edit/car-edit.component';
 import { OwnerListComponent } from './owner-list/owner-list.component';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
 import { OwnerCarListComponent } from './owner-car-list/owner-car-list.component'
+import { OwnerDeteleComponent } from "./owner-detele/owner-detele.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/car-list', pathMatch: 'full' },
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'owner-car-list',
     component: OwnerCarListComponent
+  },
+  {
+    path: 'owner-delete',
+    component: OwnerDeteleComponent
   }
 ];
 

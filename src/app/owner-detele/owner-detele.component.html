@@ -1,1 +1,13 @@
-<p>owner-detele works!</p>
+<mat-card>
+    <mat-card-title>Owner List</mat-card-title>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let owner of owners">
+          <h3 mat-line>
+              <mat-checkbox onchange="getChecked(owner)"><a mat-button [routerLink]="['/owner-delete', owner.dni]">{{owner.name}}</a></mat-checkbox>
+          </h3>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <button mat-fab color="primary" [routerLink]="['/owner-delete']">Delete</button>
+  </mat-card>
