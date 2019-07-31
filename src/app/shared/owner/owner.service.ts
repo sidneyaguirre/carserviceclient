@@ -33,7 +33,7 @@ export class OwnerService {
       result = this.http.put(owner.href, owner); 
       console.log(`el resultado es: ${result}`);     
     } else {
-      result = this.http.post(this.API, owner);
+      result = this.http.post(this.API + '/owners', owner);
     }    
     return result;
   }

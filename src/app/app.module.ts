@@ -11,9 +11,11 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolb
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarEditComponent } from './car-edit/car-edit.component';
 import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { OwnerListComponent } from './owner-list/owner-list.component';
 import { OwnerEditComponent } from './owner-edit/owner-edit.component';
 import { OwnerCarListComponent } from './owner-car-list/owner-car-list.component';
+import { OwnerDeteleComponent } from './owner-detele/owner-detele.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { OwnerCarListComponent } from './owner-car-list/owner-car-list.component
     OwnerListComponent,
     OwnerEditComponent,
     OwnerCarListComponent,
+    OwnerDeteleComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,8 @@ import { OwnerCarListComponent } from './owner-car-list/owner-car-list.component
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
